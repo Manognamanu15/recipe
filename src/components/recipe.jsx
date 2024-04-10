@@ -15,7 +15,7 @@ function RecipeInfo(props) {
 export default function DetailedRecipe() {
   const { recipeId } = useParams();
   const [recipe, setRecipe] = useState(null);
-  const serverUrl = `http://127.0.0.1:5700/recipes`;
+  const serverUrl = `http://127.0.0.1:5800/recipes`;
   useEffect(() => {
     fetch(serverUrl)
       .then((response) => response.json())

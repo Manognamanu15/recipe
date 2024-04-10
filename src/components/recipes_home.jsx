@@ -3,7 +3,7 @@ import { useSearchParams } from "react-router-dom";
 import Header from "./header";
 import Card from "./card";
 
-const url = "http://localhost:5000/recipes";
+const url = "http://127.0.0.1:5800/recipes";
 
 export default function Recipes() {
   const [searchParams, setSearchParams] = useSearchParams();

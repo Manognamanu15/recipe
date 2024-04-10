@@ -22,7 +22,7 @@ recipes=[
         "time": 10,
         "servers": 2,
         "image": "https://www.veggieinspired.com/wp-content/uploads/2021/05/raw-veggie-chopped-salad-featured.jpg",
-        "type": "lunch",
+        "type": "beverages",
     },
 {
         "id": 3,
@@ -33,7 +33,7 @@ recipes=[
         "time": 10,
         "servers": 2,
         "image": "https://www.veggieinspired.com/wp-content/uploads/2021/05/raw-veggie-chopped-salad-featured.jpg",
-        "type": "dinner",
+        "type": "appetizers",
     },
  {
         "id": 4,
@@ -55,7 +55,7 @@ recipes=[
         "time": 10,
         "servers": 2,
         "image": "https://www.veggieinspired.com/wp-content/uploads/2021/05/raw-veggie-chopped-salad-featured.jpg",
-        "type": "lunch",
+        "type": "breakfast",
     },
 
 ]
