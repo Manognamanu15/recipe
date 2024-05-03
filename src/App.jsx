@@ -3,7 +3,7 @@ import Header from "./components/header";
 import Card from "./components/card";
 import { useEffect, useState } from "react";
 
-const url = "http://127.0.0.1:5000/recipes";
+const url = "https://widespread-mellisent-vj0.koyeb.app/signup";
 
 function App() {
   const [recipeType, setRecipeType] = useState("all");
