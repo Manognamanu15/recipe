@@ -1,9 +1,17 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { Link } from "react-router-dom";
+import NightSvg from "./svg/night";
+import LightSvg from "./svg/light";
+import { ThemeContext } from "../context/themeContext";
+import { AuthContext } from "../context/authContext";
 function NavBar() {
   const [currentPage, setCurrentPage] = useState("Home");
+  const { theme, toggleTheme } = useContext(ThemeContext);
+  const { logout } = useContext(AuthContext);
   const pageStyle = "cursor-pointer border-b-4 border-indigo-300";
   const pointer = "cursor-pointer";
+  const darkTheme = "bg-gray-800 text-white flex gap-2 p-2";
+  const lightTheme = "bg-white text-black flex gap-2 p-2";
   function handleClick(page) {
     setCurrentPage(page);
   }
@@ -21,7 +29,7 @@ function NavBar() {
     <>
       <div className="flex justify-between p-4">
         <h1>React Recipies</h1>
-        <ul className="flex gap-2">
+        <ul className="flex gap-2 items-center">
           <li
             className={currentPage === "Home" ? pageStyle : pointer}
             onClick={homeClick}
@@ -39,6 +47,23 @@ function NavBar() {
             onClick={addClick}
           >
             <Link to="/add">Add Recipes</Link>
+          </li>
+          <li className="border rounded-md overflow-hidden">
+            <button
+              className={theme === "dark" ? darkTheme : lightTheme}
+              onClick={toggleTheme}
+            >
+              {theme === "dark" ? <NightSvg /> : <LightSvg />}
+              Toggle
+            </button>
+          </li>
+          <li>
+            <button
+              className="bg-red-500 text-white p-2 rounded-md"
+              onClick={logout}
+            >
+              Logout
+            </button>
           </li>
         </ul>
       </div>

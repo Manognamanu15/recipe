@@ -1,4 +1,4 @@
-import Home from "../routes/home";
+import Home from "../components/home";
 export default function HomeRoute() {
   return <Home />;
 }

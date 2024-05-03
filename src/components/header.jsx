@@ -1,3 +1,4 @@
+import NavBar from "./navbar";
 function Header(props) {
   console.log("Rendered Header");
   const selectedStyle =

@@ -1,20 +1,24 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import Header from "./header";
 import Card from "./card";
-
-const url = "http://127.0.0.1:5800/recipes";
+import { AuthContext } from "../context/authContext";
+const url = "https://widespread-mellisent-vj0.koyeb.app/recipes";
 
 export default function Recipes() {
   const [searchParams, setSearchParams] = useSearchParams();
   const [recipes, setRecipes] = useState([]);
-
+  const { token } = useContext(AuthContext);
   const changeRecipe = (type) => {
     setSearchParams({ type: type });
   };
-  const recipeType = searchParams.get("type");
+  const recipeType = searchParams.get("type") || "all";
   useEffect(() => {
-    fetch(url)
+    fetch(url, {
+      headers: {
+        Authorization: "Bearer" + token,
+      },
+    })
       .then((response) => {
         return response.json();
       })
@@ -31,16 +35,12 @@ export default function Recipes() {
   return (
     <>
       <Header type={recipeType} changeRecipe={changeRecipe} />
-      {/* <Counter /> */}
       <div className="grid grid-cols-4 gap-6 p-8">
-        {
-          // [Card, Card]
-          recipes.map((recipe, index) => {
-            if (recipeType === recipe.type || recipeType === "all") {
-              return <Card key={index} recipe={recipe} />;
-            }
-          })
-        }
+        {recipes.map((recipe, index) => {
+          if (recipeType === recipe.type || recipeType === "all") {
+            return <Card key={index} recipe={recipe} />;
+          }
+        })}
       </div>
     </>
   );
